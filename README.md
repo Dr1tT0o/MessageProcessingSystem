@@ -23,4 +23,4 @@ Option 1: Navigate to "/NBMFS" and open the file "Napier Message Service.sln" wi
 Option 2: Navigate to "/NBMFS/Napier Message Service/obj/Debug" and open the file "Napier Message Service" - this should start the application directly
 
 
-In the file message_examples you can find examples of messages in a valid format that can be used to test the application.
+In the file "message_examples" you can find examples of messages in a valid format that can be used to test the application. Copy and paste messages from the file into the application or provide the file as input to the application. 
