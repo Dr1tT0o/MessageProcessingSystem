@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Napier_Message_Service.Views.ViewStatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Napier_Message_Service.Views"
+             mc:Ignorable="d" 
+             Background="#333333"
+             d:DesignHeight="600" d:DesignWidth="750">
+    <UserControl.Resources>
+        <Image x:Key="refresh_logo" Source="/Images/refresh_logo.png"/>
+    </UserControl.Resources>
+    <Border Padding="50 20">
+        <StackPanel>
+            <!-- TOP PANEL -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 20">
+                <TextBlock Text="NBMFS" TextAlignment="Right" FontSize="40" Foreground="White" Margin="0 5 5 5" HorizontalAlignment="Right"/>
+                <Image Width="60" Height="60" HorizontalAlignment="Right" Source="/Images/message_icon.ico"/>
+            </StackPanel>
+
+            <Button Content="{StaticResource refresh_logo}" Command="{Binding RefreshButtonCommand}" Grid.Column="4" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="#222222" Padding="5"/>
+            <StackPanel Margin="0 5" Height="360" Background="#222">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding TrendingTextBlock}" Grid.Column="0" Foreground="#71d7ee" HorizontalAlignment="Center" FontSize="18" Margin="0 5"/>
+                    <TextBlock Text="{Binding MentionsTextBlock}" Grid.Column="1" Foreground="#73e06d" HorizontalAlignment="Center" FontSize="18" Margin="0 5"/>
+                    <TextBlock Text="{Binding IncidentsTextBlock}" Grid.Column="2" Foreground="#ff2646" HorizontalAlignment="Center" FontSize="18" Margin="0 5"/>
+                </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="322">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="DisplayTrendingList"  Background="#333" Margin="4 0 2 0" Foreground="#ddd" Grid.Column="0" Padding="10"></ListView>
+                        <ListView x:Name="DisplayMentionsList"  Background="#333" Margin="2 0" Foreground="#ddd" Grid.Column="1" Padding="10"></ListView>
+                        <ListView x:Name="DisplayIncidentsList"  Background="#333" Margin="2 0 4 0" Foreground="#ddd" Grid.Column="2" Padding="10"></ListView>
+                    </Grid>
+                </ScrollViewer>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

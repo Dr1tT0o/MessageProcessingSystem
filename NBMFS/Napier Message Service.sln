@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Napier Message Service", "Napier Message Service\Napier Message Service.csproj", "{68C69628-B2BF-434B-BA63-F2C537BAECD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBMFSTest", "NBMFSTest\NBMFSTest.csproj", "{4F8B757E-87AD-4FEA-A2FF-EAC79E43E1D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68C69628-B2BF-434B-BA63-F2C537BAECD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68C69628-B2BF-434B-BA63-F2C537BAECD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68C69628-B2BF-434B-BA63-F2C537BAECD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68C69628-B2BF-434B-BA63-F2C537BAECD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8B757E-87AD-4FEA-A2FF-EAC79E43E1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8B757E-87AD-4FEA-A2FF-EAC79E43E1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8B757E-87AD-4FEA-A2FF-EAC79E43E1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8B757E-87AD-4FEA-A2FF-EAC79E43E1D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56FAEA28-4DEE-47B3-A5F7-D5811934C815}
+	EndGlobalSection
+EndGlobal

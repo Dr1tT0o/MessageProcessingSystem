@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Napier_Message_Service.Views.ViewMessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Napier_Message_Service.Views"
+             mc:Ignorable="d" 
+             Background="#333333"
+             d:DesignHeight="600" d:DesignWidth="750">
+    <UserControl.Resources>
+        <Image x:Key="All_logo" Source="/Images/all_logo.png"/>
+        <Image x:Key="email_logo" Source="/Images/email_logo.png"/>
+        <Image x:Key="sms_logo" Source="/Images/sms_logo.png"/>
+        <Image x:Key="tweeter_logo" Source="/Images/tweeter_logo.png"/>
+        <Image x:Key="search" Source="/Images/search.png"/>
+        <Image x:Key="sir_logo" Source="/Images/sir2_logo.png"/>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFEEEEEE"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#32bc37"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#1f8722"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border Padding="50 20">
+        <StackPanel>
+
+            <!-- TOP PANEL -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="NBMFS" TextAlignment="Right" FontSize="40" Foreground="White" Margin="0 5 5 5" HorizontalAlignment="Right"/>
+                <Image Width="60" Height="60" HorizontalAlignment="Right" Source="/Images/message_icon.ico"/>
+            </StackPanel>
+            <TextBlock Text="{Binding SearchMessageTextBlock}" Margin="5 15 0 0" Foreground="#ddd" FontSize="12"/>
+
+            <!-- CONTROL PANEL -->
+            <Grid Margin="5 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- SEARCH CONTROL -->
+                    <TextBox Text="{Binding SearchMessageTextBox}" Grid.Column="0" FontSize="12" Foreground="#ddd"  Background="#333" BorderBrush="#666" Padding="5" Height="28" VerticalAlignment="Top"/>
+                    <Button Style="{StaticResource ButtonStyle}" Content="{StaticResource search}" Command="{Binding SearchButtonCommand}" Grid.Column="1" Height="28" Padding="5" VerticalAlignment="Top" Background="#eee"/>
+
+                </Grid>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonViewAll" Style="{StaticResource ButtonStyle}" Content="{StaticResource All_logo}" Grid.Column="3" Command="{Binding FilterAllButtonCommand}" ToolTip="All messages" Margin="1,0" Padding="3" Height="30" Width="30" Background="#eee"/>
+                    <Button x:Name="ButtonViewTweet" Style="{StaticResource ButtonStyle}" Content="{StaticResource tweeter_logo}" Grid.Column="4" Command="{Binding FilterTweetButtonCommand}" ToolTip="Tweets" Margin="1,0" Padding="5" Height="30" Width="30" Background="#eee"/>
+                    <Button x:Name="ButtonViewSms" Style="{StaticResource ButtonStyle}" Content="{StaticResource sms_logo}" Grid.Column="5" Command="{Binding FilterSmsButtonCommand}" ToolTip="SMS" Margin="1,0" Padding="5" Height="30" Width="30" Background="#eee"/>
+                    <Button x:Name="ButtonViewEmail" Style="{StaticResource ButtonStyle}" Content="{StaticResource email_logo}" Grid.Column="6" Command="{Binding FilterEmailButtonCommand}" ToolTip="Emails" Margin="1,0" Padding="5" Height="30" Width="30" Background="#eee"/>
+                    <Button x:Name="ButtonViewSir" Style="{StaticResource ButtonStyle}" Content="{StaticResource sir_logo}" Grid.Column="6" Command="{Binding FilterSirButtonCommand}" ToolTip="SIRs" Margin="1,0" Padding="5" Height="30" Width="30" Background="#eee"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="{Binding ProcessedMessagesTextBlock}" Margin="5 20 0 0" FontSize="12" Foreground="#DDD" HorizontalAlignment="Left"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0 5" Height="350">
+                    <StackPanel x:Name="DisplayMessagesPanel" Background="#222222" Margin="5 0">
+                    
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
